@@ -5,7 +5,7 @@ import { basename } from "node:path";
 import { randomUUID } from "node:crypto";
 import { after } from "next/server";
 import { cookies } from "next/headers";
-import { put } from "@vercel/blob";
+import { putPublicBlob } from "@/lib/vercel-blob/put-public";
 import { SYNC_COOKIE_NAME, SYNC_ORPHAN_CLEANUP_MS, isValidSyncId } from "@/lib/sync/constants";
 import { appendSyncItem, deleteBlobSafe } from "@/lib/sync/feed-store";
 import { purgeSyncOrphan } from "@/lib/sync/purge-item";
@@ -71,9 +71,7 @@ export async function uploadKoboToSyncFeed(formData: FormData): Promise<KoboSync
 
   let url: string;
   try {
-    const blob = await put(pathname, uploadBuffer, {
-      access: "public",
-      token: process.env.BLOB_READ_WRITE_TOKEN,
+    const blob = await putPublicBlob(pathname, uploadBuffer, {
       contentType: "application/epub+zip",
       cacheControlMaxAge: 60,
     });
