@@ -47,7 +47,7 @@ Supporting libraries include **file-type** (magic-byte validation), **jszip** (E
 
 ## Self-hosting
 
-You can deploy this app to your own **Vercel** project and connect the services below. Copy `.env.example` to `.env` locally, then add the same variables in the Vercel project **Settings → Environment Variables** (Production / Preview as needed).
+You can deploy this app to your own **Vercel** project and connect the services below. Copy `.env.example` to `.env` locally, then add the same variables in the Vercel project **Settings → Environment Variables**. When you choose **All Environments** (or **Production and Preview**), expand it and ensure **Development** is checked too if you use `vercel dev` or local env sync—otherwise local runs may miss secrets.
 
 ### Environment variables
 
@@ -56,7 +56,7 @@ You can deploy this app to your own **Vercel** project and connect the services 
 | `RESEND_API_KEY` | Yes* | Resend API key for outbound email |
 | `RESEND_FROM` | Yes* | Verified sender, e.g. `Lumina Read <noreply@yourdomain.com>` |
 | `NEXT_PUBLIC_KINDLE_APPROVED_SENDER_EMAIL` | No | Shown in UI as the approved sender users should add at Amazon |
-| `NEXT_PUBLIC_APP_URL` | No | Public site URL for correct OPDS acquisition links if proxies strip `Host` |
+| `NEXT_PUBLIC_BASE_URL` | No | Public site URL for correct OPDS acquisition links if proxies strip `Host` |
 | `KV_REST_API_URL` | Yes† | Upstash REST URL for Vercel KV |
 | `KV_REST_API_TOKEN` | Yes† | Upstash REST token |
 | `BLOB_READ_WRITE_TOKEN` | Yes† | Vercel Blob read/write token |
@@ -67,7 +67,6 @@ You can deploy this app to your own **Vercel** project and connect the services 
 ### Quick start (local)
 
 ```bash
-cd web
 cp .env.example .env
 # fill in secrets
 npm install
@@ -80,7 +79,7 @@ Build check:
 npm run build
 ```
 
-Deploy the `web` directory (or monorepo root configured to build `web`) to Vercel; enable **Blob** and **KV** on the same team and attach tokens as above.
+Deploy this repository root to Vercel; enable **Blob** and **KV** on the same team and attach tokens as above.
 
 ---
 

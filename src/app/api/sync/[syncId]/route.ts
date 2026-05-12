@@ -3,7 +3,7 @@ import { isValidSyncId } from "@/lib/sync/constants";
 import { listSyncItems } from "@/lib/sync/feed-store";
 
 function configuredPublicBaseUrl(): string | null {
-  const raw = process.env.NEXT_PUBLIC_APP_URL?.trim();
+  const raw = process.env.NEXT_PUBLIC_BASE_URL?.trim();
   if (raw) return raw.replace(/\/$/, "");
   const vercel = process.env.VERCEL_URL?.trim();
   if (vercel) return `https://${vercel.replace(/^https?:\/\//, "")}`;
