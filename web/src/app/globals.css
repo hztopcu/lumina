@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+:root {
+  /* Lumina Read — design tokens (matches screen spec) */
+  --lumina-bg: #0a0a0c;
+  --lumina-text: #ffffff;
+  --lumina-muted: #94a3b8;
+  --lumina-success: #22c55e;
+  --lumina-glass: rgba(255, 255, 255, 0.05);
+  --lumina-glass-border: rgba(255, 255, 255, 0.1);
+  --lumina-gradient-from: #a78bfa;
+  --lumina-gradient-via: #818cf8;
+  --lumina-gradient-to: #7dd3fc;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-lumina-bg: var(--lumina-bg);
+  --color-lumina-muted: var(--lumina-muted);
+  --color-lumina-success: var(--lumina-success);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--lumina-bg);
+  color: var(--lumina-text);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
